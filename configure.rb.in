@@ -175,9 +175,9 @@ AC_SUBST("LINK_SO")
 
 unless $APACHE_LIBDIR.empty?
   begin
-    $libpath = libpathflag("$(APACHE_LIBDIR)") 
+    $libpath = libpathflag("$(libdir)") + " " + libpathflag("$(APACHE_LIBDIR)")
   rescue NameError
-    $libpath = "-L$(APACHE_LIBDIR)"
+    $libpath = "-L$(libdir) -L$(APACHE_LIBDIR)"
   end
 end
 AC_SUBST("libpath")
