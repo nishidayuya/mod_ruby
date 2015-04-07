@@ -162,7 +162,7 @@ when /(ms|bcc)win32|mingw/
 end
 
 librubyarg = $LIBRUBYARG.dup
-Config.expand(librubyarg)
+RbConfig.expand(librubyarg)
 $MODULE_LIBS = "#{librubyarg} #{$LIBS}"
 AC_SUBST("MODULE_LIBS")
 
