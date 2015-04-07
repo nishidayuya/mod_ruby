@@ -298,14 +298,14 @@ $VPATH = ""
 
 $arch = CONFIG["arch"]
 $sitearch = CONFIG["sitearch"]
-$ruby_version = Config::CONFIG["ruby_version"] ||
+$ruby_version = RbConfig::CONFIG["ruby_version"] ||
   CONFIG["MAJOR"] + "." + CONFIG["MINOR"]
 
 $CC = CONFIG["CC"]
 $AR = CONFIG["AR"]
 $LD = "$(CC)"
 $RANLIB = CONFIG["RANLIB"]
-$ruby = arg_config("--ruby", File.join(Config::CONFIG["bindir"], CONFIG["ruby_install_name"]))
+$ruby = arg_config("--ruby", File.join(RbConfig::CONFIG["bindir"], CONFIG["ruby_install_name"]))
 $RUBY = ($nmake && !$configure_args.has_key?('--ruby')) ? $ruby.gsub(%r'/', '\\') : $ruby
 if RUBY_VERSION < "1.8.0"
   $RM = 'rm -f'
@@ -598,7 +598,7 @@ when /(ms|bcc)win32|mingw/
 end
 
 librubyarg = $LIBRUBYARG.dup
-Config.expand(librubyarg)
+RbConfig.expand(librubyarg)
 $MODULE_LIBS = "#{librubyarg} #{$LIBS}"
 AC_SUBST("MODULE_LIBS")
 
