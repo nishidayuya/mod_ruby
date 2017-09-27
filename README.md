@@ -1,12 +1,12 @@
-= README for mod_ruby
+# README for mod_ruby
 
-== What's mod_ruby?
+## What's mod_ruby?
 
 mod_ruby embeds the Ruby interpreter into the Apache web server,
 allowing Ruby CGI scripts to be executed natively. These scripts will
 start up much faster than without mod_ruby.
 
-== Required environment
+## Required environment
 
 * Ruby version 1.6.x or later.
   (Recommends version 1.6.4 or later.)
@@ -19,7 +19,7 @@ You can use Apache 2.0 also, but there are some restrictions.
 * Some methods are not implemented for Apache 2.0 because Apache 2.0
   API is different from Apache 1.x API.
 
-== Installation
+## Installation
 
 (1) Type `./configure.rb' to create Makefile.
     (Type `./configure.rb --help' to get a help message.)
@@ -32,6 +32,27 @@ You can use Apache 2.0 also, but there are some restrictions.
 
 (5) Restart Apache.
 
-== Official Web Site
+## Building / Testing / Development with Docker
+
+* Build the Docker image:
+
+```
+$ docker build -t mod_ruby .
+```
+
+* Start up a container, binding port 80
+
+```
+$ docker run -d -p 8080:80 mod_ruby
+```
+
+* Try out the first Hello World test script:
+
+```
+$ curl http://localhost:8080/ruby-run/test1.rb
+Hello World!
+```
+
+## Official Web Site
 
 ((<URL:http://modruby.net/>))
