@@ -54,6 +54,4 @@ RUN ruby configure.rb \
     && make \
     && make install
 
-
-
-
+CMD /usr/sbin/httpd -DFOREGROUND
