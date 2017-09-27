@@ -41,7 +41,10 @@ RUN rvm install ruby-2.3.3
 
 WORKDIR /usr/src/mod_ruby
 COPY . /usr/src/mod_ruby
+
+# Install apache config
 COPY examples/mod_ruby.conf /etc/httpd/conf.d
+COPY examples/docker_httpd.conf /etc/httpd/conf.d
 
 RUN ruby configure.rb \
     --with-apr-includes=/usr/include/apr-1 \
