@@ -92,7 +92,7 @@ static VALUE f_eval_string_wrap(VALUE self, VALUE str)
 	Check_Type(str, T_STRING);
     }
     else {
-	Check_SafeStr(str);
+	SafeStringValue(str);
     }
     return rb_eval_string_wrap(StringValuePtr(str), NULL);
 }
