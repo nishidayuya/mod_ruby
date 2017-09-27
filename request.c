@@ -1822,9 +1822,9 @@ static VALUE request_uploads( VALUE self )
     if ( !data->apreq->parsed ) rb_funcall( self, rb_intern("parse"), 0 );
 
 #if RUBY_VM
-    if (!RHASH(data->upload_table)->ntbl->num_entries) {
+    if (!RHASH_SIZE(data->upload_table)) {
 #else
-    if (!RHASH(data->upload_table)->tbl->num_entries) {
+    if (!RHASH_SIZE(data->upload_table)) {
 #endif
 	for ( upload = ApacheRequest_upload(data->apreq);
 	      upload;
@@ -2097,9 +2097,9 @@ static VALUE request_cookies( VALUE self )
     if ( !data->apreq->parsed ) rb_funcall( self, rb_intern("parse"), 0 );
 
 #ifdef RUBY_VM
-    if ( ! RHASH(data->cookies)->ntbl->num_entries ) {
+    if ( ! RHASH_SIZE(data->cookies) ) {
 #else
-    if ( ! RHASH(data->cookies)->tbl->num_entries ) {
+    if ( ! RHASH_SIZE(data->cookies) ) {
 #endif
 	ApacheCookieJar *jar = ApacheCookie_parse( data->request, NULL );
     int i;
