@@ -45,6 +45,8 @@ COPY . /usr/src/mod_ruby
 RUN ruby configure.rb \
     --with-apr-includes=/usr/include/apr-1 \
     --with-apxs=/usr/sbin/apxs \
+    # Force mod_ruby.so to statically link ruby interpreter
+    && sed 's/LIBRUBYARG = $(LIBRUBYARG_SHARED)/LIBRUBYARG = $(LIBRUBYARG_STATIC)/' -i Makefile \
     && make
 
 
