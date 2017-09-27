@@ -47,7 +47,8 @@ RUN ruby configure.rb \
     --with-apxs=/usr/sbin/apxs \
     # Force mod_ruby.so to statically link ruby interpreter
     && sed 's/LIBRUBYARG = $(LIBRUBYARG_SHARED)/LIBRUBYARG = $(LIBRUBYARG_STATIC)/' -i Makefile \
-    && make
+    && make \
+    && make install
 
 
 
